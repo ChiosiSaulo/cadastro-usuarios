@@ -83,7 +83,7 @@ public class UsuarioService {
 	 */
 	
 	private void updateData(Usuario usuarioAtualizado, Usuario usuario) {
-		usuarioAtualizado.setName(usuario.getName());
+		usuarioAtualizado.setNome(usuario.getNome());
 		usuarioAtualizado.setEmail(usuario.getEmail());
 	}
 }
