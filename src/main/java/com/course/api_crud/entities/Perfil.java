@@ -1,14 +1,17 @@
 package com.course.api_crud.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Perfil implements Serializable{
@@ -18,6 +21,12 @@ public class Perfil implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
+	@ManyToMany
+	@JoinTable(name = "PERFIL_USUARIO",
+	joinColumns = @JoinColumn(name="perfil_id"),
+	inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+	private List<Usuario> usuarios = new ArrayList<>();
 	
 	public Perfil() {
 	}
@@ -48,6 +57,10 @@ public class Perfil implements Serializable{
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -60,6 +73,4 @@ public class Perfil implements Serializable{
 		Perfil other = (Perfil) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 }

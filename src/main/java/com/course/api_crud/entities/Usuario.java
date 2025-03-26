@@ -1,12 +1,15 @@
 package com.course.api_crud.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Usuario implements Serializable{
@@ -18,6 +21,9 @@ public class Usuario implements Serializable{
 	private String nome;
 	private String email;
 	private String senha;
+	
+	@ManyToMany(mappedBy = "usuarios")
+	List<Perfil> perfis = new ArrayList<>();
 	
 	public Usuario() {
 	}
@@ -60,6 +66,11 @@ public class Usuario implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	
+	public List<Perfil> getPerfis() {
+		return perfis;
 	}
 
 	@Override
