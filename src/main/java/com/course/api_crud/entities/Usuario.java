@@ -1,9 +1,9 @@
 package com.course.api_crud.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +28,7 @@ public class Usuario implements Serializable{
 	@JoinTable(name = "USUARIO_PERFIL",
 	joinColumns = @JoinColumn(name="usuario_id"),
 	inverseJoinColumns = @JoinColumn(name = "perfil_id"))
-	List<Perfil> perfis = new ArrayList<>();
+	Set<Perfil> perfis = new HashSet<>();
 	
 	public Usuario() {
 	}
@@ -74,7 +74,7 @@ public class Usuario implements Serializable{
 	}
 	
 	
-	public List<Perfil> getPerfis() {
+	public Set<Perfil> getPerfis() {
 		return perfis;
 	}
 

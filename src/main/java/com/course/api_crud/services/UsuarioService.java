@@ -1,13 +1,18 @@
 package com.course.api_crud.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.course.api_crud.entities.Perfil;
 import com.course.api_crud.entities.Usuario;
 import com.course.api_crud.repositories.UsuarioRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -85,6 +90,8 @@ public class UsuarioService {
 	private void updateData(Usuario usuarioAtualizado, Usuario usuario) {
 		usuarioAtualizado.setNome(usuario.getNome());
 		usuarioAtualizado.setEmail(usuario.getEmail());
-		
+		for(Perfil perfil : usuario.getPerfis()) {
+			usuarioAtualizado.getPerfis().add(perfil);
+		}
 	}
 }

@@ -1,13 +1,18 @@
 package com.course.api_crud.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.course.api_crud.entities.Perfil;
+import com.course.api_crud.entities.Usuario;
 import com.course.api_crud.repositories.PerfilRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PerfilService {

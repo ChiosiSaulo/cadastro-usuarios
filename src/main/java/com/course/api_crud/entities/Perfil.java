@@ -1,9 +1,9 @@
 package com.course.api_crud.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -11,8 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
@@ -26,7 +24,7 @@ public class Perfil implements Serializable{
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "perfis")
-	private List<Usuario> usuarios = new ArrayList<>();
+	private Set<Usuario> usuarios = new HashSet<>();
 	
 	public Perfil() {
 	}
@@ -58,7 +56,7 @@ public class Perfil implements Serializable{
 		return Objects.hash(id);
 	}
 	
-	public List<Usuario> getUsuarios() {
+	public Set<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
