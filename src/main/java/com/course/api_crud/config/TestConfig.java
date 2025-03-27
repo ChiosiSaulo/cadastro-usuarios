@@ -38,12 +38,12 @@ public class TestConfig implements CommandLineRunner{
 		
 		perfilRepository.saveAll(Arrays.asList(p1, p2, p3));
 		
-		p1.getUsuarios().add(u1);
-		p1.getUsuarios().add(u3);
-		p2.getUsuarios().add(u1);
-		p3.getUsuarios().add(u2);
+		u1.getPerfis().add(p1);
+		u1.getPerfis().add(p3);
+		u2.getPerfis().add(p2);
+		u3.getPerfis().add(p1);
 		
-		perfilRepository.saveAll(Arrays.asList(p1, p2, p3));
+		usuarioRepository.saveAll(Arrays.asList(u1, u2, u3));
 	}
 
 }

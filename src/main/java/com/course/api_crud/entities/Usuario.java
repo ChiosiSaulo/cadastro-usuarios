@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
@@ -22,7 +24,10 @@ public class Usuario implements Serializable{
 	private String email;
 	private String senha;
 	
-	@ManyToMany(mappedBy = "usuarios")
+	@ManyToMany
+	@JoinTable(name = "USUARIO_PERFIL",
+	joinColumns = @JoinColumn(name="usuario_id"),
+	inverseJoinColumns = @JoinColumn(name = "perfil_id"))
 	List<Perfil> perfis = new ArrayList<>();
 	
 	public Usuario() {

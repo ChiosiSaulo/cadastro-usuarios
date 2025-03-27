@@ -25,10 +25,7 @@ public class Perfil implements Serializable{
 	private String nome;
 	
 	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "PERFIL_USUARIO",
-	joinColumns = @JoinColumn(name="perfil_id"),
-	inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+	@ManyToMany(mappedBy = "perfis")
 	private List<Usuario> usuarios = new ArrayList<>();
 	
 	public Perfil() {
